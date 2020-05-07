@@ -1185,6 +1185,13 @@ module.exports = function createGame(options) {
 
     function buildDeck() {
         var deck = [];
+        var maxPerCard = 3;
+        if (countReadyPlayers() > 6) {
+            maxPerCard = 4;
+        }
+        if (countReadyPlayers() > 8) {
+            maxPerCard = 5;
+        }
         for (var i = 0; i < 3; i++) {
             deck = deck.concat(state.roles);
         }
