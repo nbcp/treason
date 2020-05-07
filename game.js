@@ -1192,7 +1192,7 @@ module.exports = function createGame(options) {
         if (countReadyPlayers() > 8) {
             maxPerCard = 5;
         }
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < maxPerCard; i++) {
             deck = deck.concat(state.roles);
         }
         return shuffle(deck);
