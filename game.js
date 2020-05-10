@@ -837,6 +837,11 @@ module.exports = function createGame(options) {
                     throw new GameException('Only the targetted player can allow the action');
                 }
             } else {
+                // add 'allow' message to history when a player allow the action
+                // but only when action is toward to nobody or to the target player
+                if (state.state.target === undefined || state.state.target === playerIdx) {
+                    addHistory('allow', curTurnHistGroup(), '{%d} allowed the action', playerIdx);
+                }
                 allows[playerIdx] = true;
                 if (!everyoneAllows()) {
                     return false;
